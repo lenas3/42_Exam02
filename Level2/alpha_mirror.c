@@ -1,0 +1,52 @@
+#include <unistd.h>
+
+int main(int argc, char **argv)
+{
+    int i;
+    int c;
+
+    i = 0;
+    if(argc < 2)
+    {
+        write(1, "\n", 1);
+        return (0);
+    }
+    if(argc == 2)
+    {
+        while(argv[1][i])
+    {
+        c = argv[1][i];
+        if(c >= 'a' && c <= 'z')
+            c = 'z' - (c -'a'); 
+        else if(c >= 'A' && c <= 'Z')
+            c = 'Z' - (c - 'A');
+        write(1, &c ,1);
+        i++;
+    }
+    }
+    write(1, "\n", 1);
+    return 0;
+}
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(int ac, char **av)
+{
+    if (ac == 4) 
+    {
+        int n1 = atoi(av[1]);
+        int n2 = atoi(av[3]);
+        if(av[2][0] == '+')
+            printf("%i\n", n1+n2);
+        else if(av[2][0] == '-')
+            printf("%i\n", n1-n2);
+        else if(av[2][0] == '*')
+            printf("%i\n", n1*n2);
+        else if(av[2][0] == '/')
+            printf("%i\n", n1/n2);
+        else if(av[2][0] == '%')
+            printf("%i\n", n1%n2);
+    } else printf("\n");
+    return 0;
+}
